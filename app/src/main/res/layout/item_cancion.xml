@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="180dp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="15dp"
+    android:padding="15dp"
+    android:orientation="vertical"
+    android:background="@drawable/music_card">
+
+    <ImageView
+        android:id="@+id/imgCancion"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        android:background="#151924"
+        android:contentDescription="Imagen de canción" />
+
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Popular Track"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/tvArtista"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Global Hits"
+        android:textColor="#6A7B92"
+        android:textSize="12sp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:layout_marginTop="4dp" />
+
+</LinearLayout>
