@@ -9,22 +9,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Spotify"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".PerfilActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PlaylistActivity"
+            android:exported="false" />
         <activity
             android:name=".RegistroActivity"
             android:exported="false" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
     </application>
 
 </manifest>
