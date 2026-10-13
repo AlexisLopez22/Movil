@@ -1,42 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="180dp"
-    android:layout_height="wrap_content"
-    android:layout_marginEnd="15dp"
-    android:padding="15dp"
-    android:orientation="vertical"
-    android:background="@drawable/music_card">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="76dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingHorizontal="10dp"
+    android:background="#0D0F15">
 
     <ImageView
         android:id="@+id/imgCancion"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
         android:scaleType="centerCrop"
-        android:background="#151924"
-        android:contentDescription="Imagen de canción" />
+        android:background="#1E2433"
+        android:contentDescription="Portada de la canción" />
 
-    <TextView
-        android:id="@+id/tvTitulo"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Popular Track"
-        android:textColor="#FFFFFF"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:maxLines="1"
-        android:ellipsize="end"
-        android:layout_marginTop="10dp" />
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="8dp">
 
-    <TextView
-        android:id="@+id/tvArtista"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Global Hits"
-        android:textColor="#6A7B92"
-        android:textSize="12sp"
-        android:maxLines="1"
-        android:ellipsize="end"
-        android:layout_marginTop="4dp" />
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Faint"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <TextView
+            android:id="@+id/tvArtista"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Linkin Park"
+            android:textColor="#929BAD"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btnReproducirCancion"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@android:color/transparent"
+        android:src="@android:drawable/ic_media_play"
+        android:tint="#2CE4F5"
+        android:padding="9dp"
+        android:contentDescription="Reproducir canción" />
 
 </LinearLayout>

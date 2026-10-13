@@ -1,6 +1,7 @@
 package com.example.spotify;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,27 +22,31 @@ public class MainActivity extends AppCompatActivity {
 
     EditText etCorreo, etPassword;
     Button btnIniciarSesion, btnRegistro;
+    Button btnPlayPause , btnNext ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inicio_sesion);
+
         etCorreo = findViewById(R.id.etCorreo);
         etPassword = findViewById(R.id.etPassword);
         btnIniciarSesion = findViewById(R.id.btnIniciarSesion);
         btnRegistro = findViewById(R.id.btnRegistro);
 
         btnRegistro.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, RegistroActivity.class);
+            Intent intent = new Intent(
+                    MainActivity.this,
+                    RegistroActivity.class
+            );
             startActivity(intent);
         });
         btnIniciarSesion.setOnClickListener(v -> iniciarSesion());
     }
-
     private void iniciarSesion() {
         String correo = etCorreo.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
-        // Comprobar que no estén vacíos
         if (correo.isEmpty() || password.isEmpty()) {
             Toast.makeText(
                     this,
@@ -51,40 +56,28 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         SolicitudLogin datos = new SolicitudLogin(correo, password);
-
-        // Conectar con la API
         AutenticacionAPI api = ClienteRetrofit.obtenerAPI();
-
         api.iniciarSesion(datos).enqueue(new Callback<RespuestaLogin>() {
 
             @Override
             public void onResponse(
                     Call<RespuestaLogin> call,
                     Response<RespuestaLogin> response) {
-
-                // Login correcto
                 if (response.isSuccessful() && response.body() != null) {
-
                     RespuestaLogin respuesta = response.body();
-
                     Toast.makeText(
                             MainActivity.this,
                             "Bienvenido " + respuesta.getUser().getName(),
                             Toast.LENGTH_SHORT
                     ).show();
-
-                    // Ir al Home
+                    // Abrir Home después del inicio de sesión exitoso
                     Intent intent = new Intent(
                             MainActivity.this,
                             Activity_home.class
                     );
-
                     startActivity(intent);
                     finish();
-
                 } else {
-
-                    // Login incorrecto
                     Toast.makeText(
                             MainActivity.this,
                             "Correo o contraseña incorrectos",
@@ -92,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
                     ).show();
                 }
             }
-
             @Override
             public void onFailure(
                     Call<RespuestaLogin> call,
