@@ -1,5 +1,8 @@
+package com.example.spotify;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -11,47 +14,51 @@ import com.example.spotify.R;
 public class PerfilActivity extends AppCompatActivity {
 
     // 1. Declaración de Vistas
-    private TextView tvVolverHome, tvTituloTop, tvNombrePlaylist, tvDescripcionPlaylist, tvTotalCanciones;
-    private ImageView imgPortadaPlaylist;
-    private Button btnReproducirPlaylist, btnAgregarCancion;
-    private LinearLayout containerCanciones; // Para inflar elementos dinámicamente o reemplazar por RecyclerView
+    private ImageView imgFotoPerfil;
+    private TextView tvNombreUsuario, tvCorreoUsuario, tvVolverHomeP, tvEditarPerfil;
+    private EditText etEditarNombre, etEditarCorreo, etEditarPassword;
+    private Button btnGuardarPerfil, btnCerrarSesion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_playlist);
+        setContentView(R.layout.activity_perfil);
 
         // 2. Vinculación con los IDs del XML
-        tvVolverHome = findViewById(R.id.tvVolverHome);
-        tvTituloTop = findViewById(R.id.tvTituloTop);
-        tvNombrePlaylist = findViewById(R.id.tvNombrePlaylist);
-        tvDescripcionPlaylist = findViewById(R.id.tvDescripcionPlaylist);
-        tvTotalCanciones = findViewById(R.id.tvTotalCanciones);
+        imgFotoPerfil = findViewById(R.id.imgFotoPerfil);
+        tvNombreUsuario = findViewById(R.id.tvNombreUsuario);
+        tvCorreoUsuario = findViewById(R.id.tvCorreoUsuario);
+        tvVolverHomeP = findViewById(R.id.tvVolverHomeP);
+        tvEditarPerfil = findViewById(R.id.tvEditarPerfil);
 
-        imgPortadaPlaylist = findViewById(R.id.imgPortadaPlaylist);
-        btnReproducirPlaylist = findViewById(R.id.btnReproducirPlaylist);
-        btnAgregarCancion = findViewById(R.id.btnAgregarCancion);
-        containerCanciones = findViewById(R.id.containerCanciones);
+        etEditarNombre = findViewById(R.id.etEditarNombre);
+        etEditarCorreo = findViewById(R.id.etEditarCorreo);
+        etEditarPassword = findViewById(R.id.etEditarPassword);
+
+        btnGuardarPerfil = findViewById(R.id.btnGuardarPerfil);
+        btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
 
         // 3. Documentación de Eventos y Lógica
 
-        // Volver al Home
-        tvVolverHome.setOnClickListener(v -> finish());
+        // Volver a la pantalla anterior
+        tvVolverHomeP.setOnClickListener(v -> finish());
 
-        // Iniciar reproducción de la lista completa
-        btnReproducirPlaylist.setOnClickListener(v -> {
-            // TODO: Pasar la lista de canciones al servicio de reproducción
+        // Guardar la información actualizada del perfil
+        btnGuardarPerfil.setOnClickListener(v -> {
+            String nuevoNombre = etEditarNombre.getText().toString().trim();
+            String nuevoCorreo = etEditarCorreo.getText().toString().trim();
+            String nuevaPassword = etEditarPassword.getText().toString().trim();
+
+            // TODO: Rellenar con la validación de campos y actualización en BD / SharedPreferences
         });
 
-        // Agregar una nueva canción a la lista
-        btnAgregarCancion.setOnClickListener(v -> {
-            // TODO: Desplegar selector de canciones para añadir a esta playlist
+        // Cerrar sesión del usuario
+        btnCerrarSesion.setOnClickListener(v -> {
+            // TODO: Limpiar la sesión actual y redirigir a LoginActivity
+            Intent intent = new Intent(PerfilActivity.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
         });
-    }
-
-    // TODO: Método para cargar y mostrar la información vacía o recuperar de la BD
-    private void cargarDatosPlaylist() {
-        // tvNombrePlaylist.setText(...);
-        // tvTotalCanciones.setText(...);
     }
 }

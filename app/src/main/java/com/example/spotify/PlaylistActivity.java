@@ -13,51 +13,45 @@ import androidx.appcompat.app.AppCompatActivity;
 public class PlaylistActivity extends AppCompatActivity {
 
     // 1. Declaración de Vistas
-    private ImageView imgFotoPerfil;
-    private TextView tvNombreUsuario, tvCorreoUsuario, tvVolverHomeP, tvEditarPerfil;
-    private EditText etEditarNombre, etEditarCorreo, etEditarPassword;
-    private Button btnGuardarPerfil, btnCerrarSesion;
+    private TextView tvVolverHome, tvTituloTop, tvNombrePlaylist, tvDescripcionPlaylist, tvTotalCanciones;
+    private ImageView imgPortadaPlaylist;
+    private Button btnReproducirPlaylist, btnAgregarCancion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_perfil);
+        setContentView(R.layout.activity_playlist);
 
         // 2. Vinculación con los IDs del XML
-        imgFotoPerfil = findViewById(R.id.imgFotoPerfil);
-        tvNombreUsuario = findViewById(R.id.tvNombreUsuario);
-        tvCorreoUsuario = findViewById(R.id.tvCorreoUsuario);
-        tvVolverHomeP = findViewById(R.id.tvVolverHomeP);
-        tvEditarPerfil = findViewById(R.id.tvEditarPerfil);
+        tvVolverHome = findViewById(R.id.tvVolverHome);
+        tvTituloTop = findViewById(R.id.tvTituloTop);
+        tvNombrePlaylist = findViewById(R.id.tvNombrePlaylist);
+        tvDescripcionPlaylist = findViewById(R.id.tvDescripcionPlaylist);
+        tvTotalCanciones = findViewById(R.id.tvTotalCanciones);
 
-        etEditarNombre = findViewById(R.id.etEditarNombre);
-        etEditarCorreo = findViewById(R.id.etEditarCorreo);
-        etEditarPassword = findViewById(R.id.etEditarPassword);
-
-        btnGuardarPerfil = findViewById(R.id.btnGuardarPerfil);
-        btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
+        imgPortadaPlaylist = findViewById(R.id.imgPortadaPlaylist);
+        btnReproducirPlaylist = findViewById(R.id.btnReproducirPlaylist);
+        btnAgregarCancion = findViewById(R.id.btnAgregarCancion);
 
         // 3. Documentación de Eventos y Lógica
 
-        // Volver a la pantalla anterior
-        tvVolverHomeP.setOnClickListener(v -> finish());
+        // Volver al Home
+        tvVolverHome.setOnClickListener(v -> finish());
 
-        // Guardar la información actualizada del perfil
-        btnGuardarPerfil.setOnClickListener(v -> {
-            String nuevoNombre = etEditarNombre.getText().toString().trim();
-            String nuevoCorreo = etEditarCorreo.getText().toString().trim();
-            String nuevaPassword = etEditarPassword.getText().toString().trim();
-
-            // TODO: Rellenar con la validación de campos y actualización en BD / SharedPreferences
+        // Iniciar reproducción de la lista completa
+        btnReproducirPlaylist.setOnClickListener(v -> {
+            // TODO: Pasar la lista de canciones al servicio de reproducción
         });
 
-        // Cerrar sesión del usuario
-        btnCerrarSesion.setOnClickListener(v -> {
-            // TODO: Limpiar la sesión actual y redirigir a LoginActivity
-            Intent intent = new Intent(PlaylistActivity.this, MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            finish();
+        // Agregar una nueva canción a la lista
+        btnAgregarCancion.setOnClickListener(v -> {
+            // TODO: Desplegar selector de canciones para añadir a esta playlist
         });
+    }
+
+    // TODO: Método para cargar y mostrar la información vacía o recuperar de la BD
+    private void cargarDatosPlaylist() {
+        // tvNombrePlaylist.setText(...);
+        // tvTotalCanciones.setText(...);
     }
 }

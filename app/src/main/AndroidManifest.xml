@@ -11,6 +11,10 @@
         android:usesCleartextTraffic="true">
 
         <activity
+            android:name=".PerfilActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".Activity_home"
             android:exported="false" />
 

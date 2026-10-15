@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     Button btnIniciarSesion, btnRegistro;
     Button btnPlayPause , btnNext ;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -5,7 +5,8 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
+import android.content.Intent;
+import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Activity_home extends AppCompatActivity {
@@ -15,6 +16,7 @@ public class Activity_home extends AppCompatActivity {
     private ImageButton btnPlayPause;
     private ImageButton btnNext;
     private ImageButton btnPrevious;
+    private TextView btnMiPerfil;
 
     private TextView tvCancionActual;
     private TextView tvArtistaActual;
@@ -54,6 +56,13 @@ public class Activity_home extends AppCompatActivity {
         btnPrevious = findViewById(R.id.btnAnterior);
         tvCancionActual = findViewById(R.id.tvCancionActual);
         tvArtistaActual = findViewById(R.id.tvArtistaActual);
+        btnMiPerfil = findViewById(R.id.tvMiPerfil);
+
+        btnMiPerfil.setOnClickListener(v -> {
+            Intent intent = new Intent(Activity_home.this, PerfilActivity.class);
+            startActivity(intent);
+        });
+
         reproducirCancion();
 
         // Pausar o reanudar la canción
