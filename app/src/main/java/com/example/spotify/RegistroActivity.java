@@ -89,14 +89,13 @@ public class RegistroActivity extends AppCompatActivity {
                                 finish();
 
                             } else if (response.code() == 422) {
-
-                                Toast.makeText(
-                                        RegistroActivity.this,
-                                        "Revisa los datos. El correo puede estar registrado "
-                                                + "o algún campo ser inválido.",
-                                        Toast.LENGTH_LONG
-                                ).show();
-
+                                try {
+                                    String errorServer = response.errorBody().string();
+                                    android.util.Log.e("ERROR_LARAVEL", errorServer);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                Toast.makeText(RegistroActivity.this, "Error de validación 422", Toast.LENGTH_LONG).show();
                             } else {
 
                                 Toast.makeText(

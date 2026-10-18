@@ -1,38 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#0D0F15">
 
+    <!-- Encabezado superior -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:gravity="center_vertical"
         android:paddingHorizontal="20dp"
-        android:orientation="horizontal"
-        android:background="#0D0F15">
+        android:paddingTop="20dp"
+        android:paddingBottom="12dp">
 
-        <TextView
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="AudioFile"
-            android:textColor="#2CE4F5"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:orientation="vertical">
 
-        <TextView
-        android:id="@+id/tvMiPerfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mi perfil"
-        android:textColor="#DCE2ED"
-        android:textSize="14sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hola, Juanito 👋"
+                android:textColor="#FFFFFF"
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="¿Qué quieres escuchar hoy?"
+                android:textColor="#929BAD"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnPerfil"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Perfil"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/profile_badge"
+            app:tint="#FFFFFF" />
     </LinearLayout>
-    <ScrollView
+
+    <!-- Contenido desplazable -->
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -45,135 +67,177 @@
             android:orientation="vertical"
             android:paddingBottom="20dp">
 
+            <!-- Banner Destacado -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_marginHorizontal="20dp"
+                app:cardCornerRadius="14dp"
+                app:cardBackgroundColor="#1A202B"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Recomendado para ti"
+                        android:textColor="#2CE4F5"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Vibes Urbanas"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Playlist · 50 canciones"
+                        android:textColor="#929BAD"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Sección: Tus géneros favoritos -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="20dp"
-                android:text="Tu música, a tu manera."
-                android:textColor="#929BAD"
-                android:textSize="14sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginBottom="26dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="12dp"
+                android:text="Tus géneros favoritos"
+                android:textColor="#FFFFFF"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
                 android:paddingHorizontal="14dp"
-                android:background="#1A202B">
+                android:scrollbars="none">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="⌕"
-                    android:textColor="#2CE4F5"
-                    android:textSize="26sp" />
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="Buscar canciones o artistas"
-                    android:textColor="#929BAD"
-                    android:textSize="14sp" />
+                    <!-- Chip Rock -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="6dp"
+                        android:background="#1D4ED8"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="10dp"
+                        android:text="🎸 Rock"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
 
-            </LinearLayout>
+                    <!-- Chip Reggaetón -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="6dp"
+                        android:background="#6D28D9"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="10dp"
+                        android:text="🔥 Reggaetón"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
 
+                    <!-- Chip Rap -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="6dp"
+                        android:background="#BE185D"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="10dp"
+                        android:text="🎤 Rap"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+
+                    <!-- Chip Pop -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="6dp"
+                        android:background="#E11D48"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="10dp"
+                        android:text="✨ Pop"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- Sección: Recientes -->
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginBottom="10dp"
-                android:text="Escuchado recientemente"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="12dp"
+                android:text="Recientes"
                 android:textColor="#FFFFFF"
-                android:textSize="19sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <LinearLayout
+            <!-- RecyclerView donde se cargará la lista -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCancionesRecientes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingHorizontal="10dp">
-
-                <include layout="@layout/item_cancion" />
-                <include layout="@layout/item_cancion" />
-                <include layout="@layout/item_cancion" />
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="26dp"
-                android:layout_marginBottom="10dp"
-                android:text="Hecho para ti"
-                android:textColor="#FFFFFF"
-                android:textSize="19sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingHorizontal="10dp">
-
-                <include layout="@layout/item_cancion" />
-                <include layout="@layout/item_cancion" />
-                <include layout="@layout/item_cancion" />
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="26dp"
-                android:layout_marginBottom="10dp"
-                android:text="Explora nuevos sonidos"
-                android:textColor="#FFFFFF"
-                android:textSize="19sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingHorizontal="10dp">
-
-                <include layout="@layout/item_cancion" />
-                <include layout="@layout/item_cancion" />
-                <include layout="@layout/item_cancion" />
-
-            </LinearLayout>
+                android:paddingHorizontal="10dp"
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_cancion" />
 
         </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
-    </ScrollView>
-
+    <!-- Barra de Reproducción -->
     <LinearLayout
         android:id="@+id/playerBar"
         android:layout_width="match_parent"
-        android:layout_height="82dp"
+        android:layout_height="60dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:paddingHorizontal="16dp"
-        android:background="#1A202B"
-        android:elevation="8dp">
+        android:background="#1A202B">
+
+        <ImageView
+            android:id="@+id/imgPortadaActual"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="#2E384D"
+            android:src="@android:drawable/ic_menu_gallery"
+            android:scaleType="centerCrop"
+            android:contentDescription="Portada" />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:paddingEnd="8dp">
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvCancionActual"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Faint"
                 android:textColor="#FFFFFF"
@@ -184,47 +248,87 @@
 
             <TextView
                 android:id="@+id/tvArtistaActual"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
                 android:text="Linkin Park"
                 android:textColor="#929BAD"
                 android:textSize="12sp"
                 android:maxLines="1"
                 android:ellipsize="end" />
-
         </LinearLayout>
 
-        <ImageButton
+        <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/btnAnterior"
-            android:layout_width="42dp"
-            android:layout_height="46dp"
-            android:background="@android:color/transparent"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@android:drawable/ic_media_previous"
-            android:tint="#FFFFFF"
-            android:padding="9dp"
-            android:contentDescription="Canción anterior" />
+            android:contentDescription="Anterior"
+            android:padding="12dp"
+            app:tint="#FFFFFF" />
 
-        <ImageButton
+        <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/btnPlayPause"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@android:color/transparent"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@android:drawable/ic_media_pause"
-            android:tint="#2CE4F5"
-            android:padding="8dp"
-            android:contentDescription="Reproducir o pausar" />
+            android:contentDescription="Pausar"
+            android:padding="10dp"
+            app:tint="#2CE4F5" />
 
-        <ImageButton
+        <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/btnSiguiente"
-            android:layout_width="42dp"
-            android:layout_height="46dp"
-            android:background="@android:color/transparent"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@android:drawable/ic_media_next"
-            android:tint="#FFFFFF"
-            android:padding="9dp"
-            android:contentDescription="Canción siguiente" />
+            android:contentDescription="Siguiente"
+            android:padding="12dp"
+            app:tint="#FFFFFF" />
+    </LinearLayout>
 
+    <!-- Navegación Inferior -->
+    <LinearLayout
+        android:id="@+id/btnNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="#0D0F15">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnInicio"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_home"
+            android:contentDescription="Inicio"
+            android:padding="14dp"
+            app:tint="#2CE4F5" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnBuscar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_search"
+            android:contentDescription="Buscar"
+            android:padding="14dp"
+            app:tint="#929BAD" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnPlaylist"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_playlist"
+            android:contentDescription="Playlist"
+            android:padding="14dp"
+            app:tint="#929BAD" />
     </LinearLayout>
 
 </LinearLayout>

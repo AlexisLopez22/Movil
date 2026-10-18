@@ -2,18 +2,18 @@ package com.example.spotify.modelos;
 
 public class SolicitudRegistro {
 
-    private String name;
+    private String username;
     private String email;
     private String password;
 
-    public SolicitudRegistro(String name, String email, String password) {
-        this.name = name;
+    public SolicitudRegistro(String username, String email, String password) {
+        this.username = username;
         this.email = email;
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
     public String getEmail() {

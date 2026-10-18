@@ -1,61 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="76dp"
-    android:orientation="horizontal"
+    android:layout_height="72dp"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
     android:gravity="center_vertical"
-    android:paddingHorizontal="10dp"
-    android:background="#0D0F15">
+    android:orientation="horizontal"
+    android:paddingHorizontal="16dp">
 
-    <ImageView
-        android:id="@+id/imgCancion"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:scaleType="centerCrop"
-        android:background="#1E2433"
-        android:contentDescription="Portada de la canción" />
+    <!-- Portada con bordes redondeados en tono oscuro -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="#1F2937">
 
+        <ImageView
+            android:id="@+id/imgCancion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="Portada de la canción"
+            android:scaleType="centerCrop"
+            android:src="@android:drawable/ic_menu_gallery" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- Información de la canción en modo oscuro -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="8dp"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="8dp">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tvTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:text="Faint"
             android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:maxLines="1"
-            android:ellipsize="end" />
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvArtista"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Linkin Park"
-            android:textColor="#929BAD"
-            android:textSize="12sp"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
             android:maxLines="1"
-            android:ellipsize="end" />
+            android:text="Linkin Park"
+            android:textColor="#9CA3AF"
+            android:textSize="13sp" />
 
     </LinearLayout>
 
+    <!-- Botón de opciones (3 puntos) en todo claro -->
     <ImageButton
-        android:id="@+id/btnReproducirCancion"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@android:color/transparent"
-        android:src="@android:drawable/ic_media_play"
-        android:tint="#2CE4F5"
-        android:padding="9dp"
-        android:contentDescription="Reproducir canción" />
+        android:id="@+id/btnOpciones"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Opciones de la canción"
+        android:src="@android:drawable/ic_menu_more"
+        app:tint="#9CA3AF" />
 
 </LinearLayout>

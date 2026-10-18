@@ -16,7 +16,7 @@ public class Activity_home extends AppCompatActivity {
     private ImageButton btnPlayPause;
     private ImageButton btnNext;
     private ImageButton btnPrevious;
-    private TextView btnMiPerfil;
+    private ImageButton btnPerfil;
 
     private TextView tvCancionActual;
     private TextView tvArtistaActual;
@@ -56,9 +56,9 @@ public class Activity_home extends AppCompatActivity {
         btnPrevious = findViewById(R.id.btnAnterior);
         tvCancionActual = findViewById(R.id.tvCancionActual);
         tvArtistaActual = findViewById(R.id.tvArtistaActual);
-        btnMiPerfil = findViewById(R.id.tvMiPerfil);
+        btnPerfil = findViewById(R.id.btnPerfil);
 
-        btnMiPerfil.setOnClickListener(v -> {
+        btnPerfil.setOnClickListener(v -> {
             Intent intent = new Intent(Activity_home.this, PerfilActivity.class);
             startActivity(intent);
         });
@@ -109,10 +109,10 @@ public class Activity_home extends AppCompatActivity {
                 this,
                 canciones[cancionActual]
         );
-        if (reproductor != null) {
             // Actualizar el nombre de la canción y del artista
             tvCancionActual.setText(nombresCanciones[cancionActual]);
             tvArtistaActual.setText(nombresArtistas[cancionActual]);
+            if (reproductor != null) {
             reproductor.start();
             btnPlayPause.setImageResource(
                     android.R.drawable.ic_media_pause
