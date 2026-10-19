@@ -8,7 +8,6 @@
     android:orientation="vertical"
     android:background="#0D0F15">
 
-    <!-- Encabezado superior -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,11 +48,9 @@
             android:contentDescription="Perfil"
             android:padding="10dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/profile_badge"
-            app:tint="#FFFFFF" />
+            android:src="@drawable/perfil" />
     </LinearLayout>
 
-    <!-- Contenido desplazable -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -67,7 +64,6 @@
             android:orientation="vertical"
             android:paddingBottom="20dp">
 
-            <!-- Banner Destacado -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
@@ -110,7 +106,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Sección: Tus géneros favoritos -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -134,7 +129,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <!-- Chip Rock -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -146,7 +140,6 @@
                         android:textColor="#FFFFFF"
                         android:textStyle="bold" />
 
-                    <!-- Chip Reggaetón -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -158,7 +151,6 @@
                         android:textColor="#FFFFFF"
                         android:textStyle="bold" />
 
-                    <!-- Chip Rap -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -170,7 +162,6 @@
                         android:textColor="#FFFFFF"
                         android:textStyle="bold" />
 
-                    <!-- Chip Pop -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -184,7 +175,7 @@
                 </LinearLayout>
             </HorizontalScrollView>
 
-            <!-- Sección: Recientes -->
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -196,7 +187,6 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <!-- RecyclerView donde se cargará la lista -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvCancionesRecientes"
                 android:layout_width="match_parent"
@@ -208,8 +198,6 @@
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
-    <!-- Barra de Reproducción -->
     <LinearLayout
         android:id="@+id/playerBar"
         android:layout_width="match_parent"
@@ -288,7 +276,6 @@
             app:tint="#FFFFFF" />
     </LinearLayout>
 
-    <!-- Navegación Inferior -->
     <LinearLayout
         android:id="@+id/btnNavigation"
         android:layout_width="match_parent"

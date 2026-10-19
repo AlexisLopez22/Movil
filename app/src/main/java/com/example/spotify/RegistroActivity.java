@@ -29,6 +29,11 @@ public class RegistroActivity extends AppCompatActivity {
         EditText etCorreoR = findViewById(R.id.etCorreoR);
         EditText etPasswordR = findViewById(R.id.etPasswordR);
         Button btnRegistrarse = findViewById(R.id.btnRegistrarse);
+        Button btnIrInicioSesion = findViewById(R.id.btnIraInicioSesion);
+
+        btnIrInicioSesion.setOnClickListener(v -> {
+            finish();
+                });
 
         btnRegistrarse.setOnClickListener(v -> {
 

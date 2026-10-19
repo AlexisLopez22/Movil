@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
     EditText etCorreo, etPassword;
     Button btnIniciarSesion, btnRegistro;
+
+    Button btnIraInicioSesion;
     Button btnPlayPause , btnNext ;
 
     @Override
@@ -43,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         });
         btnIniciarSesion.setOnClickListener(v -> iniciarSesion());
     }
+
+
     private void iniciarSesion() {
         String correo = etCorreo.getText().toString().trim();
         String password = etPassword.getText().toString().trim();

@@ -1,39 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/Registrar_Usuario"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#13161F">
+    android:background="#13161F"
+    android:gravity="center"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="383dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="70dp"
         android:layout_marginEnd="25dp"
         android:background="@drawable/formulario_redondeado"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="25dp">
+
+        <!-- Logo Circular -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            app:cardCornerRadius="40dp"
+            app:cardElevation="0dp">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/logo_audiofile" />
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:gravity="center"
-            android:text="Crear Cuenta"
-            android:textColor="#00BFFF"
-            android:textSize="27sp"
+            android:text="Crea tu cuenta"
+            android:textColor="#FFFFFF"
+            android:textSize="26sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
+            android:text="Únete a AudioFile y disfruta la música"
+            android:textColor="#A0A5B5"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/etNombreR"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/rounded_box"
             android:drawableStart="@drawable/cuenta_icon"
-            android:hint="Nombre"
+            android:drawablePadding="10dp"
+            android:hint="Nombre completo"
             android:inputType="text"
             android:padding="15dp" />
 
@@ -44,7 +73,8 @@
             android:layout_marginTop="15dp"
             android:background="@drawable/rounded_box"
             android:drawableStart="@drawable/baseline_email_24"
-            android:hint="Correo"
+            android:drawablePadding="10dp"
+            android:hint="Correo electrónico"
             android:inputType="textEmailAddress"
             android:padding="15dp" />
 
@@ -55,20 +85,31 @@
             android:layout_marginTop="15dp"
             android:background="@drawable/rounded_box"
             android:drawableStart="@drawable/password_icon"
+            android:drawablePadding="10dp"
             android:hint="Contraseña"
             android:inputType="textPassword"
             android:padding="15dp" />
 
         <Button
             android:id="@+id/btnRegistrarse"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="25dp"
+            android:backgroundTint="#00BFFF"
+            android:text="Crear cuenta"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/btnIraInicioSesion"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="#00BFFF"
-            android:text="Registrarse"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@android:color/transparent"
+            android:text="¿Ya tienes cuenta? Inicia sesión"
+            android:textColor="#00BFFF"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
     </LinearLayout>
