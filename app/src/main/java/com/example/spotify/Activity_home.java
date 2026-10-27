@@ -1,12 +1,11 @@
-
 package com.example.spotify;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.content.Intent;
-import android.widget.ImageView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Activity_home extends AppCompatActivity {
@@ -17,6 +16,9 @@ public class Activity_home extends AppCompatActivity {
     private ImageButton btnNext;
     private ImageButton btnPrevious;
     private ImageButton btnPerfil;
+    private ImageButton btnPlaylist;
+    private ImageButton btnBuscar;
+    private ImageButton btnInicio;
 
     private TextView tvCancionActual;
     private TextView tvArtistaActual;
@@ -51,26 +53,37 @@ public class Activity_home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         btnPlayPause = findViewById(R.id.btnPlayPause);
         btnNext = findViewById(R.id.btnSiguiente);
         btnPrevious = findViewById(R.id.btnAnterior);
         tvCancionActual = findViewById(R.id.tvCancionActual);
         tvArtistaActual = findViewById(R.id.tvArtistaActual);
         btnPerfil = findViewById(R.id.btnPerfil);
+        btnPlaylist = findViewById(R.id.btnPlaylist);
+        btnBuscar = findViewById(R.id.btnBuscar);
+        btnInicio = findViewById(R.id.btnInicio);
 
+        // Perfil
         btnPerfil.setOnClickListener(v -> {
             Intent intent = new Intent(Activity_home.this, PerfilActivity.class);
             startActivity(intent);
         });
 
+        // Redirección a Playlist / Librería
+        if (btnPlaylist != null) {
+            btnPlaylist.setOnClickListener(v -> {
+                Intent intent = new Intent(Activity_home.this, PlaylistActivity.class);
+                startActivity(intent);
+            });
+        }
+
         reproducirCancion();
 
-        // Pausar o reanudar la canción
         btnPlayPause.setOnClickListener(v -> {
             if (reproductor != null) {
                 if (reproductor.isPlaying()) {
                     reproductor.pause();
-
                     btnPlayPause.setImageResource(
                             android.R.drawable.ic_media_play
                     );
@@ -82,7 +95,7 @@ public class Activity_home extends AppCompatActivity {
                 }
             }
         });
-        // Pasar a la siguiente canción
+
         btnNext.setOnClickListener(v -> {
             cancionActual++;
             if (cancionActual >= canciones.length) {
@@ -90,7 +103,7 @@ public class Activity_home extends AppCompatActivity {
             }
             reproducirCancion();
         });
-        // Regresar a la canción anterior
+
         btnPrevious.setOnClickListener(v -> {
             cancionActual--;
             if (cancionActual < 0) {
@@ -109,10 +122,11 @@ public class Activity_home extends AppCompatActivity {
                 this,
                 canciones[cancionActual]
         );
-            // Actualizar el nombre de la canción y del artista
-            tvCancionActual.setText(nombresCanciones[cancionActual]);
-            tvArtistaActual.setText(nombresArtistas[cancionActual]);
-            if (reproductor != null) {
+
+        tvCancionActual.setText(nombresCanciones[cancionActual]);
+        tvArtistaActual.setText(nombresArtistas[cancionActual]);
+
+        if (reproductor != null) {
             reproductor.start();
             btnPlayPause.setImageResource(
                     android.R.drawable.ic_media_pause
@@ -126,6 +140,7 @@ public class Activity_home extends AppCompatActivity {
             });
         }
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

@@ -1,10 +1,13 @@
 package com.example.spotify.modelos;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Usuario {
 
     private String id;
     private int role_id;
-    private String name;
+    @SerializedName("username")
+    private String username;
     private String email;
     private String created_at;
     private String updated_at;
@@ -18,7 +21,7 @@ public class Usuario {
     }
 
     public String getName() {
-        return name;
+        return username;
     }
 
     public String getEmail() {

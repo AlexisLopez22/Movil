@@ -19,6 +19,14 @@
             android:exported="false" />
 
         <activity
+            android:name=".HomeArtistaActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".SubirCancionActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".PlaylistActivity"
             android:exported="false" />
 

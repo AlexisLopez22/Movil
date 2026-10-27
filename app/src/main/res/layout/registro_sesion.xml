@@ -34,7 +34,6 @@
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/logo_audiofile" />
-
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -53,6 +52,13 @@
             android:text="Únete a AudioFile y disfruta la música"
             android:textColor="#A0A5B5"
             android:textSize="14sp" />
+
+        <Spinner
+            android:id="@+id/spinnerTipoCuenta"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_box"
+            android:layout_marginBottom="10dp" />
 
         <EditText
             android:id="@+id/etNombreR"
@@ -90,6 +96,26 @@
             android:inputType="textPassword"
             android:padding="15dp" />
 
+        <LinearLayout
+            android:id="@+id/layoutCamposArtista"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/etNombreArtistico"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/rounded_box"
+                android:drawableStart="@drawable/cuenta_icon"
+                android:drawablePadding="10dp"
+                android:hint="Nombre artístico"
+                android:inputType="text"
+                android:padding="15dp" />
+        </LinearLayout>
+
         <Button
             android:id="@+id/btnRegistrarse"
             android:layout_width="match_parent"
@@ -100,6 +126,7 @@
             android:textColor="#FFFFFF"
             android:textSize="16sp"
             android:textStyle="bold" />
+
         <Button
             android:id="@+id/btnIraInicioSesion"
             android:layout_width="wrap_content"

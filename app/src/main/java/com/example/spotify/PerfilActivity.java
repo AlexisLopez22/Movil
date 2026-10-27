@@ -38,6 +38,18 @@ public class PerfilActivity extends AppCompatActivity {
         btnGuardarPerfil = findViewById(R.id.btnGuardarPerfil);
         btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
 
+        // --- NUEVO CÓDIGO: RECUPERAR Y MOSTRAR DATOS ---
+        android.content.SharedPreferences prefs = getSharedPreferences("MisPreferencias", MODE_PRIVATE);
+        String nombreGuardado = prefs.getString("nombreUsuario", "Usuario no encontrado");
+        String correoGuardado = prefs.getString("correoUsuario", "correo@noencontrado.com");
+
+        tvNombreUsuario.setText(nombreGuardado);
+        tvCorreoUsuario.setText(correoGuardado);
+
+        etEditarNombre.setText(nombreGuardado);
+        etEditarCorreo.setText(correoGuardado);
+        // -----------------------------------------------
+
         // 3. Documentación de Eventos y Lógica
 
         // Volver a la pantalla anterior

@@ -1,7 +1,6 @@
 package com.example.spotify;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.spotify.interfaces.AutenticacionAPI;
 import com.example.spotify.modelos.RespuestaLogin;
 import com.example.spotify.modelos.SolicitudLogin;
-import com.example.spotify.network.ClienteRetrofit;
+import com.example.spotify.network.RetrofitClient;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,9 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
     EditText etCorreo, etPassword;
     Button btnIniciarSesion, btnRegistro;
-
-    Button btnIraInicioSesion;
-    Button btnPlayPause , btnNext ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,13 +39,14 @@ public class MainActivity extends AppCompatActivity {
             );
             startActivity(intent);
         });
+
         btnIniciarSesion.setOnClickListener(v -> iniciarSesion());
     }
-
 
     private void iniciarSesion() {
         String correo = etCorreo.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
+
         if (correo.isEmpty() || password.isEmpty()) {
             Toast.makeText(
                     this,
@@ -58,28 +55,49 @@ public class MainActivity extends AppCompatActivity {
             ).show();
             return;
         }
+
         SolicitudLogin datos = new SolicitudLogin(correo, password);
-        AutenticacionAPI api = ClienteRetrofit.obtenerAPI();
+        AutenticacionAPI api = RetrofitClient.INSTANCE.getAutenticacionApi();
+
         api.iniciarSesion(datos).enqueue(new Callback<RespuestaLogin>() {
 
             @Override
             public void onResponse(
                     Call<RespuestaLogin> call,
                     Response<RespuestaLogin> response) {
+
                 if (response.isSuccessful() && response.body() != null) {
                     RespuestaLogin respuesta = response.body();
+                    android.util.Log.e("DEBUG_JSON", new com.google.gson.Gson().toJson(respuesta));
+
+                    // Guardar datos de sesión
+                    android.content.SharedPreferences prefs = getSharedPreferences("MisPreferencias", MODE_PRIVATE);
+                    android.content.SharedPreferences.Editor editor = prefs.edit();
+                    editor.putString("nombreUsuario", respuesta.getUser().getName());
+                    editor.putString("correoUsuario", respuesta.getUser().getEmail());
+
+                    // Obtener el ID de rol del modelo User
+                    int roleId = respuesta.getUser().getRole_id();
+                    editor.putInt("roleIdUsuario", roleId);
+                    editor.apply();
+
                     Toast.makeText(
                             MainActivity.this,
                             "Bienvenido " + respuesta.getUser().getName(),
                             Toast.LENGTH_SHORT
                     ).show();
-                    // Abrir Home después del inicio de sesión exitoso
-                    Intent intent = new Intent(
-                            MainActivity.this,
-                            Activity_home.class
-                    );
+
+                    // Redirección condicional según el rol real
+                    Intent intent;
+                    if (roleId == 2) {
+                        intent = new Intent(MainActivity.this, HomeArtistaActivity.class);
+                    } else {
+                        intent = new Intent(MainActivity.this, Activity_home.class);
+                    }
+
                     startActivity(intent);
                     finish();
+
                 } else {
                     Toast.makeText(
                             MainActivity.this,
@@ -88,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
                     ).show();
                 }
             }
+
             @Override
             public void onFailure(
                     Call<RespuestaLogin> call,
